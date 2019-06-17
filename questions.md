@@ -491,3 +491,24 @@ function isP(str) {
 
 </p>
 </details>
+
+---
+
+Tags: _#JS_ _#MID_
+
+```javascript
+['1', '7', '11'].map(parseInt); // 
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+```javascript
+[1, NaN, 3]
+```
+
+- You should know how many params pass into callback function
+- You should know about radix. All wrong radix will be missed, JS use 10 as default value
+
+</p>
+</details>
