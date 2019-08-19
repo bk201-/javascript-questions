@@ -15,6 +15,53 @@ I will post here all the questions and tasks which I have found or heard. For ea
 https://github.com/lydiahallie/javascript-questions/blob/master/README.md
 
 ---
+Tags: _#DJS_ _#MID_
+
+Please, write your own function which will replace the "new" operator
+
+```javascript
+function Foo(name) {
+  this.name = name;
+}
+Foo.prototype.Name = function() {return this.name};
+
+function New(func, ...rest) {
+  // insert your code here
+}
+
+const foo1 = new Foo('Dio');
+const foo2 = New(Foo, 'Dan');
+
+```
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+```javascript
+function New(func, ...rest) {
+  const obj = {};
+  obj.__proto__ = func.prototype;
+  func.call(obj, ...rest);
+  return obj;
+}
+
+
+console.log(foo1.__proto__ == Foo.prototype); // true
+console.log(foo1.constructor == Foo); // true
+console.log(foo1.constructor == Foo.prototype.constructor); // true
+console.log(foo1.Name()); // Dio
+
+
+console.log(foo2.__proto__ == Foo.prototype); // true
+console.log(foo2.constructor == Foo); // true
+console.log(foo2.constructor == Foo.prototype.constructor); // true
+console.log(foo2.Name()); // Dan
+```
+
+</p>
+</details>
+
+---
 
 Tags: _#AL_ _#MID_
 
