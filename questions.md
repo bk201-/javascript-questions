@@ -38,9 +38,14 @@ const foo2 = New(Foo, 'Dan');
 <p>
 
 ```javascript
+/*
+* Prototype is an object. For inheritance you can use the following methods:
+* [[Prototype]], __proto__, Object.create, Objec.setPrototypeOf, Object.getPrototypeOf
+*/
 function New(func, ...rest) {
   const obj = {};
-  obj.__proto__ = func.prototype;
+  obj.[[Prototype]] = func.prototype;
+  // obj.__proto__ = func.prototype; // must work only in browser, obsolete field
   func.call(obj, ...rest);
   return obj;
 }
